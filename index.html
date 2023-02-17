@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Activity</title>
+        <link rel="stylesheet" href="style.css">
+        <script language="JavaScript" type="text/javascript">
+            function checkPass(){
+                var password= document.myForm.password.value;
+                if (password.length<8)
+                {
+                    document.getElementById("output1").innerHTML="Password must be at least 8 characters.";
+                    return false;
+                }
+                else
+                {
+                    document.getElementById("output1").innerHTML=" ";
+                    return true;
+                }
+                
+            }
+            function checkAge(){
+                var date = document.myForm.bday.value;
+                var d = date.split("-");
+                var age = 2023 - d[0];
+                if(age<21)
+                {
+                    document.getElementById("output2").innerHTML="Minors are not allowed!";
+                    return false;
+                }
+                else
+                {
+                    document.getElementById("output2").innerHTML=" ";
+                    return true;
+                }
+             }
+            function validate(){
+                if (checkPass()&&checkAge())
+                {
+                    document.getElementById("output3").innerHTML="Hooray! Your account has been successfully created.";
+                }
+                else
+                {
+                    document.getElementById("output3").innerHTML=" ";
+                }
+            }
+            
+        </script>
+    </head>
+    <body>
+        <form name="myForm">
+        <h1>Registration Form</h1>
+        <p id="output3" style="color:green;"></p>
+        First Name: <input type="text" name="firstname"/><br/>
+        Last Name: <input type="text" name="lastname"/><br/>
+        Nick Name: <input type="text" name="nickname"/><br/>
+        Email: <input type="text" name="email"/><br/>
+        Password: <input type="password" name="password"/><br/>
+        <p id="output1" style="color:red;"></p>
+        Date of Birth: <input type="date" name="bday"/><br/>
+        <p id="output2" style="color:red;"></p>
+        Gender: <input type="radio" name="male" value="male"/>Male
+        <input type="radio" name="female" value="female"/>Female
+        <input type="radio" name="other" value="other"/>Other<br/>
+        Mobile: <input type="number" name="mobile"/><br/>
+        Address: <textarea name="address" cols="25" rows="8"></textarea><br/>
+        <input type="button" name="submit" value="Submit" onclick="checkPass();checkAge();validate();">
+        <input type="reset" name="reset" value="Reset"/>
+        
+        </form>
+    </body>
+</html>
